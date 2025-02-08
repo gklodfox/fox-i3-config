@@ -16,35 +16,6 @@ separator_block_width=15
 # command=xdg-open "$website"
 # color=#f12711
 #
-[usb]
-command=/home/fox/Sources/i3blocks-contrib/usb/usb
-markup=pango
-signal=1
-interval=10
-IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5"]
-IGNORE_LIST=["sdd1", "mapper/sda1_crypt"]
-INFO_TEXT_COLOR=white
-MOUNTED_COLOR=green
-PLUGGED_COLOR=gray
-LOCKED_COLOR=gray
-UNLOCKED_NOT_MOUNTED_COLOR=yellow
-PARTITIONLESS_COLOR=red
-PARTITIONLESS_TEXT=no partitions
-SEPARATOR=<span color='gray'> | </span>
-LOCKED_INDICATOR=
-UNLOCKED_INDICATOR=
-READONLY_INDICATOR=ro
-TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
-[temperature]
-command=/home/fox/Sources/i3blocks-contrib/temperature/temperature
-label=TEMP
-interval=10
-[chords]
-command=cat /home/fox/chords.txt | tail -n 1
-interval=1
-#T_WARN=70
-#T_CRIT=90
-#SENSOR_CHIP=""
 [memory]
 command=/home/fox/Sources/i3blocks-contrib/memory/memory
 label=MEM
@@ -69,25 +40,42 @@ interval=persist
 #CRIT_PERCENT=80
 #DECIMALS=2
 #
-[aur-update]
-command='/home/fox/Sources/i3blocks-contrib/aur-update/aur-update'
-markup=pango
-format=json
-interval=43200
-UPDATE_COLOR=red
-QUIET=1
-IGNORE=root vidyodesktop
 #CACHE_UPDATES=0
 #FORCE_IPV4=1
+[usb]
+command=/home/fox/Sources/i3blocks-contrib/usb/usb
+markup=pango
+signal=1
+interval=10
+IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
+INFO_TEXT_COLOR=white
+MOUNTED_COLOR=green
+PLUGGED_COLOR=gray
+LOCKED_COLOR=gray
+UNLOCKED_NOT_MOUNTED_COLOR=yellow
+PARTITIONLESS_COLOR=red
+PARTITIONLESS_TEXT=no partitions
+SEPARATOR=<span color='gray'> | </span>
+LOCKED_INDICATOR=
+UNLOCKED_INDICATOR=
+READONLY_INDICATOR=ro
+TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
+[temperature]
+command=/home/fox/Sources/i3blocks-contrib/temperature/temperature
+label=TEMP
+interval=10
+[chords]
+command=cat /home/fox/chords.txt | tail -n 1
+interval=1
+T_WARN=70
+T_CRIT=90
+SENSOR_CHIP=""
+
+
 [weather]
 command='/home/fox/Scripts/get_weather.py'
 interval=10
-
-[greetings]
-color=#f5af19
-command=echo "Hello, $USER!"
-interval=once
-
 [time]
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=1
+
