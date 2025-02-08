@@ -48,6 +48,8 @@ for_window [class="com.mitchellh.ghostty"] move --no-auto-back-and-forth contain
 for_window [class="Alacritty"] move --no-auto-back-and-forth container to workspace $ws2
 for_window [class="qutebrowser"] move --no-auto-back-and-forth container to workspace $ws3
 for_window [class="Transformice"] move --no-auto-back-and-forth container to workspace $ws5
+for_window [class="QjackCtl"] move --no-auto-back-and-forth container to workspace $ws10
+for_window [class="Qsampler"] move --no-auto-back-and-forth container to workspace $ws10
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
@@ -77,6 +79,9 @@ workspace $ws4 output $rightDisplay
 workspace $ws5 output $rightDisplay
 workspace $ws6 output $rightDisplay
 workspace $ws7 output $rightDisplay
+workspace $ws8 output $rightDisplay
+workspace $ws9 output $rightDisplay
+workspace $ws10 output $rightDisplay
 
 exec i3-msg $bgcolor
 

@@ -23,5 +23,11 @@ exec xset -dpms
 exec telegram-desktop
 exec qutebrowser
 # exec tmux -c fluidsynth
+exec qjackctl
+exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-sink channels=2'" 
+exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-source'"  
+exec --no-startup-id "sh -c 'sleep 5; exec pacmd set-default-sink jack_out'"
+exec qsampler
+
 
 exec --no-startup-id i3-msg workspace $ws2
