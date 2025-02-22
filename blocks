@@ -16,12 +16,12 @@ separator_block_width=15
 # command=xdg-open "$website"
 # color=#f12711
 #
-[test]
-full_text=dupa
-_counter=0
-command=printf '{"full_text":"counter %s", "_counter":%d}\n' $_counter $((_counter + 1))
-format=json
-color=#ff007b
+# [test]
+# full_text=dupa
+# _counter=0
+# command=printf '{"full_text":"counter %s", "_counter":%d}\n' $_counter $((_counter + 1))
+# format=json
+# color=#ff007b
 #min_width=CPU 100.00%
 #REFRESH_TIME=1
 #LABEL=CPU
@@ -44,3 +44,9 @@ color=#ff007b
 # READONLY_INDICATOR=ro
 # TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
 
+[usb]
+command=/home/fox/Sources/i3blocks-contrib/usb/usb
+markup=pango
+signal=1
+interval=10
+IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]

@@ -2,14 +2,11 @@ separator=true
 separator_block_width=15
 [time]
 markup=pango
-command=$SCRIPT_DIR/time/time
+command=date +" <span size='x-large' weight='heavy'>%d-%m-%y - %H:%M:%S</span>"
 interval=1
-#TZ_FILE=~/.tz
-STRFTIME_FORMAT=<span size="xx-large">%Y-%m-%d %H:%M</span>
-TZONES=Europe/Warsaw
-TZ_LABELS=<span size="xx-large" foreground="#a20757">Melina</span>
 align=left
-min_width=750
+min_width=1620
+
 [temperature]
 command=/home/fox/Sources/i3blocks-contrib/temperature/temperature
 label=TEMP
@@ -41,12 +38,6 @@ interval=10
 command='/home/fox/Sources/i3blocks-contrib/cpu_usage2/cpu_usage2'
 markup=pango
 interval=persist
-[usb]
-command=/home/fox/Sources/i3blocks-contrib/usb/usb
-markup=pango
-signal=1
-interval=10
-IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
 [weather]
 command='/home/fox/Scripts/get_weather.py'
 interval=10
