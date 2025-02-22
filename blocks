@@ -16,29 +16,12 @@ separator_block_width=15
 # command=xdg-open "$website"
 # color=#f12711
 #
-# [test]
-# full_text=dupa
-# _counter=0
-# command=printf '{"full_text":"counter %s", "_counter":%d}\n' $_counter $((_counter + 1))
-# format=json
-# color=#ff007b
-[memory]
-command=/home/fox/Sources/i3blocks-contrib/memory/memory
-label=MEM
-interval=30
-
-[gpu-load]
-command='/home/fox/Sources/i3blocks-contrib/gpu-load/gpu-load'
-label=GPU
-interval=10
-#min_width=GPU 100% 100% 100% 100%
-#GPU_BRAND=NVIDIA // or AMD
-#T_WARN=70
-#T_CRIT=90
-[cpu_usage2]
-command='/home/fox/Sources/i3blocks-contrib/cpu_usage2/cpu_usage2'
-markup=pango
-interval=persist
+[test]
+full_text=dupa
+_counter=0
+command=printf '{"full_text":"counter %s", "_counter":%d}\n' $_counter $((_counter + 1))
+format=json
+color=#ff007b
 #min_width=CPU 100.00%
 #REFRESH_TIME=1
 #LABEL=CPU
@@ -48,12 +31,6 @@ interval=persist
 #
 #CACHE_UPDATES=0
 #FORCE_IPV4=1
-[usb]
-command=/home/fox/Sources/i3blocks-contrib/usb/usb
-markup=pango
-signal=1
-interval=10
-IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
 # INFO_TEXT_COLOR=white
 # MOUNTED_COLOR=green
 # PLUGGED_COLOR=gray
@@ -66,24 +43,4 @@ IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
 # UNLOCKED_INDICATOR=
 # READONLY_INDICATOR=ro
 # TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
-
-[temperature]
-command=/home/fox/Sources/i3blocks-contrib/temperature/temperature
-label=TEMP
-interval=10
-
-[chords]
-command=cat /home/fox/chords.txt | tail -n 1
-interval=1
-T_WARN=70
-T_CRIT=90
-SENSOR_CHIP=""
-
-
-[weather]
-command='/home/fox/Scripts/get_weather.py'
-interval=10
-[time]
-command=date '+%Y-%m-%d %H:%M:%S'
-interval=1
 
