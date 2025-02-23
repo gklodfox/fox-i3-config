@@ -1,48 +1,6 @@
-# i3blocks configuration file
-#
-# The i3blocks man page describes the usage of the binary,
-# and its website describes the configuration:
-#
-#     https://vivien.github.io/i3blocks
-
-
 # Global properties
-separator=true
-separator_block_width=15
-
-# [documentation]
-# full_text=dupa
-# website=https://vivien.github.io/i3blocks
-# command=xdg-open "$website"
-# color=#f12711
-#
-# [test]
-# full_text=dupa
-# _counter=0
-# command=printf '{"full_text":"counter %s", "_counter":%d}\n' $_counter $((_counter + 1))
-# format=json
-# color=#ff007b
-#min_width=CPU 100.00%
-#REFRESH_TIME=1
-#LABEL=CPU
-#WARN_PERCENT=50
-#CRIT_PERCENT=80
-#DECIMALS=2
-#
-#CACHE_UPDATES=0
-#FORCE_IPV4=1
-# INFO_TEXT_COLOR=white
-# MOUNTED_COLOR=green
-# PLUGGED_COLOR=gray
-# LOCKED_COLOR=gray
-# UNLOCKED_NOT_MOUNTED_COLOR=yellow
-# PARTITIONLESS_COLOR=red
-# PARTITIONLESS_TEXT=no partitions
-# SEPARATOR=<span color='gray'> | </span>
-# LOCKED_INDICATOR=
-# UNLOCKED_INDICATOR=
-# READONLY_INDICATOR=ro
-# TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
+separator=false
+# separator_block_width=15
 
 [usb]
 command=/home/fox/Sources/i3blocks-contrib/usb/usb
@@ -50,3 +8,15 @@ markup=pango
 signal=1
 interval=10
 IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
+# TRUNCATE_FS_LABELS=[10]
+
+[rofi-wttr]
+command=/home/fox/Sources/i3blocks-contrib/rofi-wttr/rofi-wttr
+interval=300
+BAR_POSITION=top
+#FONT=Monospace 10
+# LABEL=🌡️
+LOCATION=Wroclaw
+#ROFI_CONFIG_FILE=/dev/null
+
+

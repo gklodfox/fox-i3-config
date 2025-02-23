@@ -1,16 +1,54 @@
 separator=true
 separator_block_width=15
+
 [time]
 markup=pango
-command=date +" <span size='x-large' weight='heavy'>%d-%m-%y - %H:%M:%S</span>"
+command=date +" <span size='x-large' weight='heavy'> %d-%m-%y  %H:%M:%S</span>"
 interval=1
 align=left
-min_width=1620
+min_width=980
 
-[temperature]
-command=/home/fox/Sources/i3blocks-contrib/temperature/temperature
-label=TEMP
+[colorpicker]
+command=/home/fox/Sources/i3blocks-contrib/colorpicker/colorpicker
+format=json
+markup=pango
+interval=1
+IDLE_TEXT=<span size='x-large'> </span>
+IDLE_TEXT_COLOR=#ff007b
+
+[iface]
+command=/home/fox/Sources/i3blocks-contrib/iface/iface
+markup=pango
+LABEL=<span color="#00ff00">  </span>enp4s0
+IFACE=enp4s0
+color=#ff007b
 interval=10
+display_wifi_name=0
+
+[disk-io]
+command='/home/fox/Sources/i3blocks-contrib/disk-io/disk-io'
+interval=persist
+markup=pango
+LABEL=
+MB_ONLY=1
+MB_PRECISION=1
+SEPARATOR= 
+
+[temperature_disk]
+command=/home/fox/Sources/i3blocks-contrib/temperature/temperature | head -n 1
+label=   
+interval=10
+T_WARN=70
+T_CRIT=90
+SENSOR_CHIP="acpitz-acpi-0"
+
+[temperature_cpu]
+command=/home/fox/Sources/i3blocks-contrib/temperature/temperature | head -n 1
+label=   
+interval=10
+T_WARN=85
+T_CRIT=105
+SENSOR_CHIP="coretemp-isa-0000"
 
 # [chords]
 # command=cat /home/fox/chords.txt | tail -n 1
@@ -22,22 +60,41 @@ interval=10
 
 
 [memory]
-command=/home/fox/Sources/i3blocks-contrib/memory/memory
-label=MEM
+command=/home/fox/Sources/i3blocks-contrib/memory/memory | head -n 1
+label=  
 interval=30
 
 [gpu-load]
-command='/home/fox/Sources/i3blocks-contrib/gpu-load/gpu-load'
-label=GPU
+command=/home/fox/Sources/i3blocks-contrib/gpu-load/gpu-load | tail -n 1
+label=GPU 
 interval=10
 #min_width=GPU 100% 100% 100% 100%
-#GPU_BRAND=NVIDIA // or AMD
-#T_WARN=70
-#T_CRIT=90
-[cpu_usage2]
-command='/home/fox/Sources/i3blocks-contrib/cpu_usage2/cpu_usage2'
+GPU_BRAND=NVIDIA
+T_WARN=70
+T_CRIT=90
+
+[cpu_usage]
+command='/home/fox/Sources/i3blocks-contrib/cpu_usage/cpu_usage'
 markup=pango
 interval=persist
-[weather]
-command='/home/fox/Scripts/get_weather.py'
-interval=10
+LABEL=   
+
+# [weather]
+# command='/home/fox/Scripts/get_weather.py'
+# interval=10
+
+[shutdown_menu]
+full_text=  
+# If you are using FontAwesome, we recommend the power-off icon:
+# http://fontawesome.io/icon/power-off/
+command=/home/fox/Sources/i3blocks-contrib/shutdown_menu/shutdown_menu
+#FG_COLOR=#ff0000
+#BG_COLOR=#ff007b
+#HLFG_COLOR=#111111
+#HLBG_COLOR=#bbbbbb
+#BORDER_COLOR=#222222
+#ROFI_TEXT=Menu:
+#ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
+#ENABLE_CONFIRMATIONS=true (must be true or false)
+LAUNCHER=rofi
+LOCKSCRIPT=/home/fox/Scripts/lock_screen.fish
