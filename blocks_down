@@ -6,7 +6,7 @@ markup=pango
 command=date +" <span size='x-large' weight='heavy'> %d-%m-%y  %H:%M:%S</span>"
 interval=1
 align=left
-min_width=980
+min_width=1050
 
 [colorpicker]
 command=/home/fox/Sources/i3blocks-contrib/colorpicker/colorpicker
