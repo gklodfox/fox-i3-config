@@ -85,11 +85,9 @@ LABEL=
 
 [shutdown_menu]
 full_text=  
-# If you are using FontAwesome, we recommend the power-off icon:
-# http://fontawesome.io/icon/power-off/
 command=/home/fox/Sources/i3blocks-contrib/shutdown_menu/shutdown_menu
 #FG_COLOR=#ff0000
-#BG_COLOR=#ff007b
+BG_COLOR=#ff007b
 #HLFG_COLOR=#111111
 #HLBG_COLOR=#bbbbbb
 #BORDER_COLOR=#222222
