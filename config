@@ -101,7 +101,7 @@ bar {
 bar {
   output $leftDisplay
   output $rightDisplay
-  font pango:Iosevka Fox, Extended Medium 13
+  font pango:Iosevka Fox, Regular 13
   position bottom
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
   i3bar_command i3bar --transparency
