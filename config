@@ -23,7 +23,7 @@ set $ws10 "0:  Misc Daemons"
 # resize window (you can also use the mouse for that)
 # USER DEFINED
 gaps inner 5
-gaps outer 10
+gaps outer 5
 # smart_gaps on
 # gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
@@ -47,6 +47,8 @@ for_window [class="firefox"] move --no-auto-back-and-forth container to workspac
 for_window [class="Transformice"] move --no-auto-back-and-forth container to workspace $ws5
 for_window [class="QjackCtl"] move --no-auto-back-and-forth container to workspace $ws10
 for_window [class="Qsampler"] move --no-auto-back-and-forth container to workspace $ws10
+for_window [class="zenity"] move --no-auto-back-and-forth container to workspace $ws4
+for_window [class="lightroom.exe"] move --no-auto-back-and-forth container to workspace $ws4
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
@@ -82,10 +84,11 @@ bar {
   output $leftDisplay
   output $rightDisplay
   position top
+  font pango:Iosevka Fox Regular Extended, Bold 15
   tray_output $rightDisplay
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks
   i3bar_command i3bar --transparency
-  padding 7px 0px 5px 5px
+  padding 5px 0px 5px 5px
   colors {
     background #00101344
     statusline #ff007b
@@ -101,7 +104,7 @@ bar {
 bar {
   output $leftDisplay
   output $rightDisplay
-  font pango:Iosevka Fox, Regular 13
+  font pango:Iosevka Fox Regular Extended, Regular 13
   position bottom
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
   i3bar_command i3bar --transparency
