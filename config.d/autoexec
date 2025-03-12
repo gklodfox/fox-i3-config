@@ -17,6 +17,7 @@ exec --no-startup-id /home/fox/Scripts/startup/feh_set_wallpaper.fish
 
 # Compositor
 exec_always --no-startup-id picom &
+exec_always --no-startup-id coolercontrold
 exec xset s off
 exec xset -dpms
 

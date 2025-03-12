@@ -1,4 +1,4 @@
-font pango:Iosevka Fox Extended Regular, Medium 13
+font pango:IosevkaFoxV2 SemiBold 13
 # Color scheme
 
 set $bgcolor #ff007b

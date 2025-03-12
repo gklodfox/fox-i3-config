@@ -84,7 +84,7 @@ bar {
   output $leftDisplay
   output $rightDisplay
   position top
-  font pango:Iosevka Fox Regular Extended, Bold 15
+  font pango:IosevkaFoxV2FIbm Heavy 16
   tray_output $rightDisplay
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks
   i3bar_command i3bar --transparency
@@ -104,7 +104,7 @@ bar {
 bar {
   output $leftDisplay
   output $rightDisplay
-  font pango:Iosevka Fox Regular Extended, Regular 13
+  font pango:IosevkaFoxV2 SemiBold 13
   position bottom
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
   i3bar_command i3bar --transparency
