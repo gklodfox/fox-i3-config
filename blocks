@@ -15,7 +15,7 @@ command=/home/fox/Sources/i3blocks-contrib/rofi-wttr/rofi-wttr
 interval=300
 BAR_POSITION=top
 # LABEL=🌡️
-LOCATION=Wroclaw
+LOCATION=Wrocław
 #ROFI_CONFIG_FILE=/dev/null
 
 

@@ -62,35 +62,35 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 # Pin workspaces to left and right displays
-set $leftDisplay HDMI-0
-set $rightDisplay DP-0
+# set $dispVar HDMI-0
+set $dispVar  DP-0
 
-workspace $ws1 output $leftDisplay
-workspace $ws2 output $leftDisplay
-workspace $ws3 output $rightDisplay
-workspace $ws4 output $rightDisplay
-workspace $ws5 output $rightDisplay
-workspace $ws6 output $rightDisplay
-workspace $ws7 output $rightDisplay
-workspace $ws8 output $rightDisplay
-workspace $ws9 output $rightDisplay
-workspace $ws10 output $rightDisplay
+workspace $ws1 output $dispVar
+workspace $ws2 output $dispVar
+workspace $ws3 output $dispVar
+workspace $ws4 output $dispVar
+workspace $ws5 output $dispVar
+workspace $ws6 output $dispVar
+workspace $ws7 output $dispVar
+workspace $ws8 output $dispVar
+workspace $ws9 output $dispVar
+workspace $ws10 output $dispVar
 
 exec i3-msg $bgcolor
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  output $leftDisplay
-  output $rightDisplay
+  # output $dispVar
+  output $dispVar
   position top
   font pango:IosevkaFoxV2FIbm Heavy 16
-  tray_output $rightDisplay
+  tray_output $dispVar
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks
   i3bar_command i3bar --transparency
   padding 5px 0px 5px 5px
   colors {
-    background #00101344
+    background #00101300
     statusline #ff007b
     separator #ff007b
 
@@ -102,8 +102,8 @@ bar {
   }
 }
 bar {
-  output $leftDisplay
-  output $rightDisplay
+  # output $dispVar
+  output $dispVar
   font pango:IosevkaFoxV2 SemiBold 13
   position bottom
   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
@@ -112,7 +112,7 @@ bar {
   padding 10px 0px 0px 0px
   tray_output none
   colors {
-    background #00101344
+    background #FF000000
     statusline #ff007b
     separator #ff007b
   }
