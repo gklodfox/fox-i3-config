@@ -1,23 +1,23 @@
 separator=true
-separator_block_width=15
+separator_block_width=20
 
 [time]
 markup=pango
 command=date +" <span size='x-large' weight='heavy'> %d-%m-%y  %H:%M:%S</span>"
 interval=1
 align=left
-min_width=1010
+min_width=1030
 
-[colorpicker]
-command=/home/fox/Sources/i3blocks-contrib/colorpicker/colorpicker
-format=json
-markup=pango
-interval=1
-IDLE_TEXT=<span size='x-large'> </span>
-IDLE_TEXT_COLOR=#ff007b
+# [colorpicker]
+# command=$HOME/sources/i3blocks-contrib/colorpicker/colorpicker
+# format=json
+# markup=pango
+# interval=1
+# IDLE_TEXT=<span size='x-large'> </span>
+# IDLE_TEXT_COLOR=#ff007b
 
 [iface]
-command=/home/fox/Sources/i3blocks-contrib/iface/iface
+command=$HOME/sources/i3blocks-contrib/iface/iface
 markup=pango
 LABEL=<span color="#00ff00">  </span>enp4s0
 IFACE=enp4s0
@@ -26,7 +26,7 @@ interval=10
 display_wifi_name=0
 
 [disk-io]
-command='/home/fox/Sources/i3blocks-contrib/disk-io/disk-io'
+command=$HOME/sources/i3blocks-contrib/disk-io/disk-io
 interval=persist
 markup=pango
 LABEL=
@@ -35,7 +35,7 @@ MB_PRECISION=1
 SEPARATOR= 
 
 [temperature_disk]
-command=/home/fox/Sources/i3blocks-contrib/temperature/temperature | head -n 1
+command=$HOME/sources/i3blocks-contrib/temperature/temperature | head -n 1
 label=   
 interval=10
 T_WARN=70
@@ -43,56 +43,21 @@ T_CRIT=90
 SENSOR_CHIP="acpitz-acpi-0"
 
 [temperature_cpu]
-command=/home/fox/Sources/i3blocks-contrib/temperature/temperature | head -n 1
+command=$HOME/sources/i3blocks-contrib/temperature/temperature | head -n 1
 label=   
 interval=10
 T_WARN=85
 T_CRIT=105
 SENSOR_CHIP="coretemp-isa-0000"
 
-# [chords]
-# command=cat /home/fox/chords.txt | tail -n 1
-# interval=1
-# T_WARN=70
-# T_CRIT=90
-# SENSOR_CHIP=""
-
-
-
 [memory]
-command=/home/fox/Sources/i3blocks-contrib/memory/memory | head -n 1
+command=$HOME/sources/i3blocks-contrib/memory/memory | head -n 1
 label=  
 interval=30
 
-[gpu-load]
-command=/home/fox/Sources/i3blocks-contrib/gpu-load/gpu-load | tail -n 1
-label=GPU 
-interval=10
-#min_width=GPU 100% 100% 100% 100%
-GPU_BRAND=NVIDIA
-T_WARN=70
-T_CRIT=90
-
 [cpu_usage]
-command='/home/fox/Sources/i3blocks-contrib/cpu_usage/cpu_usage'
+command=$HOME/sources/i3blocks-contrib/cpu_usage/cpu_usage
 markup=pango
 interval=persist
 LABEL=   
 
-# [weather]
-# command='/home/fox/Scripts/get_weather.py'
-# interval=10
-
-[shutdown_menu]
-full_text=  
-command=/home/fox/Sources/i3blocks-contrib/shutdown_menu/shutdown_menu
-#FG_COLOR=#ff0000
-BG_COLOR=#ff007b
-#HLFG_COLOR=#111111
-#HLBG_COLOR=#bbbbbb
-#BORDER_COLOR=#222222
-#ROFI_TEXT=Menu:
-#ROFI_OPTIONS=-width 11 -location 3 -hide-scrollbar -bw 2
-#ENABLE_CONFIRMATIONS=true (must be true or false)
-LAUNCHER=rofi
-LOCKSCRIPT=/home/fox/Scripts/lock_screen.fish

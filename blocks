@@ -1,21 +1,20 @@
 # Global properties
-separator=false
-# separator_block_width=15
+separator=true
+separator_block_width=30
 
 [usb]
-command=/home/fox/Sources/i3blocks-contrib/usb/usb
+command=$HOME/sources/i3blocks-contrib/usb/usb
 markup=pango
 signal=1
 interval=10
-IGNORE_LIST=["sda1", "sda2", "sdd1", "sdd5", "sdd1", "mapper/sda1_crypt"]
+IGNORE_LIST=["sdb1", "sdb2", "sdd5", "sdd1", "sdc1", "mapper/sda1_crypt"]
 # TRUNCATE_FS_LABELS=[10]
 
 [rofi-wttr]
-command=/home/fox/Sources/i3blocks-contrib/rofi-wttr/rofi-wttr
-interval=300
+command=$HOME/sources/i3blocks-contrib/rofi-wttr/rofi-wttr
+interval=900
 BAR_POSITION=top
+FONT=IosevkaFoxx
 # LABEL=🌡️
 LOCATION=Wrocław
 #ROFI_CONFIG_FILE=/dev/null
-
-
