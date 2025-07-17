@@ -15,18 +15,18 @@ exec --no-startup-id nm-applet
 # exec xset s off
 # exec xset -dpms
 
-# exec telegram-desktop
-# exec qutebrowser
-# exec kitty
-# exec tmux -c fluidsynth
-# exec qjackctl
+exec --no-startup-id Telegram
+exec --no-startup-id qutebrowser
+exec  --no-startup-id kitty
+exec  --no-startup-id qjackctl
 # exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-sink channels=2'" 
 # exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-source'"  
 # exec --no-startup-id "sh -c 'sleep 5; exec pacmd set-default-sink jack_out'"
-# exec qsampler
+exec --no-startup-id "sh -c 'sleep 5'"
+exec --no-startup-id qsampler
 
 
-# exec --no-startup-id i3-msg workspace $ws2
+exec --no-startup-id i3-msg workspace $ws2
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -35,7 +35,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 # bindsym Control+Mod4+Delete exec /home/fox/Sources/i3blocks-contrib/shutdown_menu/shutdown_menu
 # start a terminal
-# bindsym Mod4+Return exec kitty
+bindsym Mod4+Return exec kitty
 # kill focused window
 bindsym Mod4+Shift+q kill
 # start dmenu (a program launcher)
@@ -164,75 +164,72 @@ set $ws9 "9:  "
 set $ws10 "0:  Misc Daemons"
 
 # resize window (you can also use the mouse for that)
-# gaps inner 5
-# gaps outer 5
-# smart_gaps on
+gaps inner 5
+gaps outer 5
+smart_gaps on
 # gaps
 
 # Pin applications to workspace
-# for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $ws1
-# for_window [class="steam"] move --no-auto-back-and-forth container to workspace $ws1
+for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $ws1
+for_window [class="steam"] move --no-auto-back-and-forth container to workspace $ws1
 # for_window [class="discord"] move --no-auto-back-and-forth container to workspace $ws1
 # for_window [class="com.mitchellh.ghostty"] move --no-auto-back-and-forth container to workspace $ws2
-# for_window [class="kitty"] move --no-auto-back-and-forth container to workspace $ws2
-# for_window [class="qutebrowser"] move --no-auto-back-and-forth container to workspace $ws3
+for_window [class="kitty"] move --no-auto-back-and-forth container to workspace $ws2
+for_window [class="qutebrowser"] move --no-auto-back-and-forth container to workspace $ws3
 # for_window [class="firefox"] move --no-auto-back-and-forth container to workspace $ws3
-# for_window [class="Transformice"] move --no-auto-back-and-forth container to workspace $ws5
-# for_window [class="QjackCtl"] move --no-auto-back-and-forth container to workspace $ws10
-# for_window [class="Qsampler"] move --no-auto-back-and-forth container to workspace $ws10
+for_window [class="Transformice"] move --no-auto-back-and-forth container to workspace $ws5
+for_window [class="QjackCtl"] move --no-auto-back-and-forth container to workspace $ws10
+for_window [class="Qsampler"] move --no-auto-back-and-forth container to workspace $ws10
 # for_window [class="zenity"] move --no-auto-back-and-forth container to workspace $ws4
 # for_window [class="lightroom.exe"] move --no-auto-back-and-forth container to workspace $ws4
-# for_window [window_role="About"] floating enable
-# for_window [window_role="Organizer"] floating enable
-# for_window [window_role="Preferences"] floating enable
-# for_window [window_role="bubble"] floating enable
-# for_window [window_role="page-info"] floating enable
-# for_window [window_role="pop-up"] floating enable
-# for_window [window_role="task_dialog"] floating enable
-# for_window [window_role="toolbox"] floating enable
-# for_window [window_role="webconsole"] floating enable
-# for_window [window_type="dialog"] floating enable
-# for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 bar {
-    status_command i3status
+  output DP-0
+  position top
+  font pango:IosevkaFoxV2FIbm Heavy 16
+  tray_output DP-0
+  status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks
+  # i3bar_command i3bar --transparency
+  padding 5px 0px 5px 5px
+  colors {
+    background #00101300
+    statusline #ff007b
+    separator #ff007b
+
+    focused_workspace  #ff007b #ff007b77 #ff007b
+    active_workspace   #a20757 #ff007b33 #a20757
+    inactive_workspace #a20757 #00101300 #a20757
+    urgent_workspace   #ff007b #ff007b #001013
+    binding_mode    #ff0000 #a20757 #ff007b
+  }
 }
+bar {
+  output DP-0
   # output $dispVar
-  # output $dispVar
-#   position top
-#   # font pango:IosevkaFoxV2FIbm Heavy 16
-#   # tray_output $dispVar
-#   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks
-#   # i3bar_command i3bar --transparency
-#   padding 5px 0px 5px 5px
-#   colors {
-#     background #00101300
-#     statusline #ff007b
-#     separator #ff007b
-#
-#     focused_workspace  #ff007b #ff007b77 #ff007b
-#     active_workspace   #a20757 #ff007b33 #a20757
-#     inactive_workspace #a20757 #00101300 #a20757
-#     urgent_workspace   #ff007b #ff007b #001013
-#     binding_mode    #ff0000 #a20757 #ff007b
-#   }
-# }
-# bar {
-#   # output $dispVar
-#   # output $dispVar
-#   # font pango:IosevkaFoxV2 SemiBold 13
-#   position bottom
-#   status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
-#   # i3bar_command i3bar --transparency
-#   workspace_buttons no
-#   padding 10px 0px 0px 0px
-#   tray_output none
-#   colors {
-#     background #FF000000
-#     statusline #ff007b
-#     separator #ff007b
-#   }
-# }
+  font pango:IosevkaFoxV2 SemiBold 13
+  position bottom
+  status_command i3blocks -c $XDG_CONFIG_HOME/i3/blocks_down
+  # i3bar_command i3bar --transparency
+  workspace_buttons no
+  padding 10px 0px 0px 0px
+  tray_output none
+  colors {
+    background #FF000000
+    statusline #ff007b
+    separator #ff007b
+  }
+}
 for_window [class="^.*"] border pixel 4
 workspace_auto_back_and_forth no
 # new_window 2pixel
