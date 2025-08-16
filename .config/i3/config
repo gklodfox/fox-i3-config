@@ -2,16 +2,10 @@ font pango:Iosevka Fox 12
 
 exec --no-startup-id dex --autostart --environment i3
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
 # Compositor
 exec --no-startup-id picom
+
+# Don't turn off screen
 exec xset s off
 exec xset -dpms
 
@@ -163,10 +157,6 @@ set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws10 "0:  Misc Daemons"
 
-# gaps inner 5
-# gaps outer 5
-# smart_gaps on
-
 # Pin applications to workspace
 for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $ws1
 for_window [class="steam"] move --no-auto-back-and-forth container to workspace $ws1
@@ -188,10 +178,11 @@ for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
+
 bar {
   output DP-0
   position top
-  font pango:Iosevka Fox 13
+  font pango:Iosevka Fox Bold 13
   tray_output DP-0
   separator_symbol 
   status_command i3blocks -c $HOME/.config/i3/blocks
@@ -209,7 +200,28 @@ bar {
     binding_mode    #ff0000 #a20757 #ff007b
   }
 }
-for_window [class="^.*"] border pixel 4
+bar {
+  output HDMI-0
+  position top
+  font pango:Iosevka Fox Bold 13
+  tray_output DP-0
+  separator_symbol 
+  status_command i3blocks -c $HOME/.config/i3/blocks
+  i3bar_command i3bar --transparency
+  padding 4px 0px 4px 0px
+  colors {
+    background #00101300
+    statusline #ff007b
+    separator #ff007b
+
+    focused_workspace  #ff007b #ff007b77 #ff007b
+    active_workspace   #a20757 #ff007b33 #a20757
+    inactive_workspace #a20757 #00101300 #a20757
+    urgent_workspace   #ff007b #ff007b #001013
+    binding_mode    #ff0000 #a20757 #ff007b
+  }
+}
+for_window [class="^.*"] border pixel 6
 smart_gaps on
 workspace_layout default
 workspace_auto_back_and_forth no
