@@ -1,33 +1,13 @@
-font pango:Iosevka Fox 12
+font pango:Iosevka Fox Extended 16
 
 exec --no-startup-id dex --autostart --environment i3
 
-# Compositor
-exec --no-startup-id picom
-
-# Don't turn off screen
-exec xset s off
-exec xset -dpms
-
-exec --no-startup-id Telegram
-exec --no-startup-id qutebrowser
-exec  --no-startup-id i3-sensible-terminal
-exec  --no-startup-id qjackctl
-# exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-sink channels=2'" 
-# exec --no-startup-id "sh -c 'sleep 5; exec pactl load-module module-jack-source'"  
-# exec --no-startup-id "sh -c 'sleep 5; exec pacmd set-default-sink jack_out'"
-exec --no-startup-id "sh -c 'sleep 5'"
-exec --no-startup-id qsampler $HOME/.config/default.lscp
-
-
-exec --no-startup-id i3-msg workspace $ws2
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-# bindsym Control+Mod4+Delete exec /home/fox/Sources/i3blocks-contrib/shutdown_menu/shutdown_menu
 # start a terminal
 bindsym Mod4+Return exec i3-sensible-terminal
 # kill focused window
@@ -65,29 +45,6 @@ bindsym Mod4+a focus parent
 # Screenshot
 bindsym Print exec --no-startup-id flameshot gui
 
-bindsym Mod4+1 workspace number $ws1
-bindsym Mod4+2 workspace number $ws2
-bindsym Mod4+3 workspace number $ws3
-bindsym Mod4+4 workspace number $ws4
-bindsym Mod4+5 workspace number $ws5
-bindsym Mod4+6 workspace number $ws6
-bindsym Mod4+7 workspace number $ws7
-bindsym Mod4+8 workspace number $ws8
-bindsym Mod4+9 workspace number $ws9
-bindsym Mod4+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace number $ws1
-bindsym Mod4+Shift+2 move container to workspace number $ws2
-bindsym Mod4+Shift+3 move container to workspace number $ws3
-bindsym Mod4+Shift+4 move container to workspace number $ws4
-bindsym Mod4+Shift+5 move container to workspace number $ws5
-bindsym Mod4+Shift+6 move container to workspace number $ws6
-bindsym Mod4+Shift+7 move container to workspace number $ws7
-bindsym Mod4+Shift+8 move container to workspace number $ws8
-bindsym Mod4+Shift+9 move container to workspace number $ws9
-bindsym Mod4+Shift+0 move container to workspace number $ws10
-
 # reload the configuration file
 bindsym Mod4+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -109,7 +66,6 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 # Keybinds
-# bindsym Mod4+l exec $HOME/scripts/lock_screen.sh
 
 set $bgcolor #ff007b
 set $in-bgcolor #a20757
@@ -120,18 +76,6 @@ set $in-text #ff007b
 set $focused-ws #ff007b
 set $bar-color  #ff007b
 
-# bgcolor:background color also border
-# in-bgcolor: inactive background color
-# text: text color
-# u-bgcolor: background of urgent action
-# indicator: color of indicator which shows where next window will be placed
-# in-text: inactive text color
-# ---
-# client.focused: color of focused window
-# client.unfocused: color of unfocused window
-# client.focused_inactive: color of focused window, not being focused at the moment
-# client.urgent: color of window with urgent action
-#
 #                       border          background      text            indicator
 client.focused          $bgcolor        $bgcolor        $text           $indicator
 client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
@@ -146,26 +90,60 @@ floating_modifier Mod4
 tiling_drag modifier titlebar
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  Messages"
-set $ws2 "2:  Terminal"
-set $ws3 "3:  Browser"
-set $ws4 "4:  VM / Wine"
-set $ws5 "5:  Grańsko"
-set $ws6 "6:  "
-set $ws7 "7:  "
-set $ws8 "8:  "
-set $ws9 "9:  "
-set $ws10 "0:  Misc Daemons"
+set $ws1 "1:   Messages"
+set $ws2 "2:   Terminal"
+set $ws3 "3:   Browser"
+set $ws4 "4:   VM / Wine"
+set $ws5 "5:   Grańsko"
+set $ws6 "6:   "
+set $ws7 "7:   "
+set $ws8 "8:   "
+set $ws9 "9:   "
+set $ws10 "0:   Misc Daemons"
+
+workspace $ws1 output nonprimary
+workspace $ws2 output nonprimary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output primary
+workspace $ws0 output primary
+workspace $ws0 output primary
+
+bindsym Mod4+1 workspace number $ws1
+bindsym Mod4+2 workspace number $ws2
+bindsym Mod4+3 workspace number $ws3
+bindsym Mod4+4 workspace number $ws4
+bindsym Mod4+5 workspace number $ws5
+bindsym Mod4+6 workspace number $ws6
+bindsym Mod4+7 workspace number $ws7
+bindsym Mod4+8 workspace number $ws8
+bindsym Mod4+9 workspace number $ws9
+bindsym Mod4+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace number $ws1
+bindsym Mod4+Shift+2 move container to workspace number $ws2
+bindsym Mod4+Shift+3 move container to workspace number $ws3
+bindsym Mod4+Shift+4 move container to workspace number $ws4
+bindsym Mod4+Shift+5 move container to workspace number $ws5
+bindsym Mod4+Shiift+6 move container to workspace number $ws6
+bindsym Mod4+Shift+7 move container to workspace number $ws7
+bindsym Mod4+Shift+8 move container to workspace number $ws8
+bindsym Mod4+Shift+9 move container to workspace number $ws9
+bindsym Mod4+Shift+0 move container to workspace number $ws10
+
+assign [class="(?i)telegram"] $ws1
+assign [class="(?i)steam"] $ws1
+assign [class="qutebrowser"] $ws3
+assign [class="(?i)alacritty"] $ws3
+assign [class="(?i)transformice"] $ws5
+assign [class="(?i)qjackctl"] $ws10
+assign [class="(?i)qsampler"] $ws10
 
 # Pin applications to workspace
-for_window [class="TelegramDesktop"] move --no-auto-back-and-forth container to workspace $ws1
-for_window [class="steam"] move --no-auto-back-and-forth container to workspace $ws1
-for_window [class="kitty"] move --no-auto-back-and-forth container to workspace $ws2
-for_window [class="alacritty"] move --no-auto-back-and-forth container to workspace $ws2
-for_window [class="qutebrowser"] move --no-auto-back-and-forth container to workspace $ws3
-for_window [class="Transformice"] move --no-auto-back-and-forth container to workspace $ws5
-for_window [class="QjackCtl"] move --no-auto-back-and-forth container to workspace $ws10
-for_window [class="Qsampler"] move --no-auto-back-and-forth container to workspace $ws10
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
@@ -177,12 +155,14 @@ for_window [window_role="toolbox"] floating enable
 for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+for_window [class="steam"] floating enable
+for_window [class="exe$"] floating enable
 
 
 bar {
   output DP-0
   position top
-  font pango:Iosevka Fox Bold 13
+  # font pango:Iosevka Fox Bold 13
   tray_output DP-0
   separator_symbol 
   status_command i3blocks -c $HOME/.config/i3/blocks
@@ -203,7 +183,7 @@ bar {
 bar {
   output HDMI-0
   position top
-  font pango:Iosevka Fox Bold 13
+  # font pango:Iosevka Fox Bold 13
   tray_output DP-0
   separator_symbol 
   status_command i3blocks -c $HOME/.config/i3/blocks
@@ -227,3 +207,16 @@ workspace_layout default
 workspace_auto_back_and_forth no
 new_window 1pixel
 new_float pixel 0
+
+# Compositor
+exec --no-startup-id picom
+exec_always feh --bg-fill /home/fox/.config/i3/static/wallpaper.png
+exec --no-startup-id Telegram
+exec --no-startup-id qutebrowser
+exec  --no-startup-id alacritty
+exec  --no-startup-id qjackctl
+exec --no-startup-id qsampler $HOME/.config/default.lscp
+# Don't turn off screen
+exec xset s off
+exec xset -dpms
+
