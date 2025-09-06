@@ -1,4 +1,4 @@
-font pango:Iosevka Fox Extended 16
+font pango:Iosevka Fox Extended 15
 
 exec --no-startup-id dex --autostart --environment i3
 
@@ -138,7 +138,7 @@ bindsym Mod4+Shift+0 move container to workspace number $ws10
 assign [class="(?i)telegram"] $ws1
 assign [class="(?i)steam"] $ws1
 assign [class="qutebrowser"] $ws3
-assign [class="(?i)alacritty"] $ws3
+assign [class="Alacritty"] $ws2
 assign [class="(?i)transformice"] $ws5
 assign [class="(?i)qjackctl"] $ws10
 assign [class="(?i)qsampler"] $ws10
@@ -164,7 +164,7 @@ bar {
   position top
   # font pango:Iosevka Fox Bold 13
   tray_output DP-0
-  separator_symbol 
+  # separator_symbol 
   status_command i3blocks -c $HOME/.config/i3/blocks
   i3bar_command i3bar --transparency
   padding 4px 0px 4px 0px
@@ -185,7 +185,7 @@ bar {
   position top
   # font pango:Iosevka Fox Bold 13
   tray_output DP-0
-  separator_symbol 
+  # separator_symbol |
   status_command i3blocks -c $HOME/.config/i3/blocks
   i3bar_command i3bar --transparency
   padding 4px 0px 4px 0px
@@ -206,7 +206,7 @@ smart_gaps on
 workspace_layout default
 workspace_auto_back_and_forth no
 new_window 1pixel
-new_float pixel 0
+new_float pixel 1
 
 # Compositor
 exec --no-startup-id picom

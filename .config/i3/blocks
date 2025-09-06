@@ -1,6 +1,6 @@
 # Global properties
 # separator=
-separator_block_width=69
+separator_block_width=19
 
 [time]
 markup=pango
