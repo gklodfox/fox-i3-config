@@ -90,16 +90,17 @@ floating_modifier Mod4
 tiling_drag modifier titlebar
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:   Messages"
-set $ws2 "2:   Terminal"
-set $ws3 "3:   Browser"
-set $ws4 "4:   VM / Wine"
-set $ws5 "5:   Grańsko"
-set $ws6 "6:   "
-set $ws7 "7:   "
-set $ws8 "8:   "
-set $ws9 "9:   "
-set $ws10 "0:   Misc Daemons"
+set $ws1 "1: ① "
+set $ws2 "2: ② "
+set $ws3 "3: ③ "
+set $ws4 "4: ④ "
+set $ws5 "5: ⑤ "
+set $ws6 "6: ⑥ "
+set $ws7 "7: ⑦ "
+set $ws8 "8: ⑧ "
+set $ws9 "9: ⑨ "
+set $ws10 "0: ⑩ "
+
 
 workspace $ws1 output nonprimary
 workspace $ws2 output nonprimary
@@ -161,52 +162,57 @@ for_window [class="exe$"] floating enable
 
 bar {
   output DP-0
-  position top
-  # font pango:Iosevka Fox Bold 13
+  position bottom
+  strip_workspace_numbers yes
+  font pango:Iosevka Fox 20
   tray_output DP-0
   # separator_symbol 
   status_command i3blocks -c $HOME/.config/i3/blocks
   i3bar_command i3bar --transparency
-  padding 4px 0px 4px 0px
+  padding 4px 4px 4px 15px
   colors {
     background #00101300
     statusline #ff007b
     separator #ff007b
 
-    focused_workspace  #ff007b #ff007b77 #ff007b
-    active_workspace   #a20757 #ff007b33 #a20757
-    inactive_workspace #a20757 #00101300 #a20757
-    urgent_workspace   #ff007b #ff007b #001013
-    binding_mode    #ff0000 #a20757 #ff007b
+    focused_workspace  #ff007b00 #00000000 #ff007b
+    active_workspace   #a2075700 #00000000 #a20757
+    inactive_workspace #a2075700 #00000000 #a20757
+    urgent_workspace   #ff007b00 #00000000 #001013
+    binding_mode    #ff000000 #00000000 #ff007b
   }
 }
 bar {
   output HDMI-0
   position top
-  # font pango:Iosevka Fox Bold 13
+  strip_workspace_numbers yes
+  font pango:Iosevka Fox Expanded 20
   tray_output DP-0
   # separator_symbol |
   status_command i3blocks -c $HOME/.config/i3/blocks
   i3bar_command i3bar --transparency
-  padding 4px 0px 4px 0px
+  padding 4px 4px 4px 15px
   colors {
     background #00101300
     statusline #ff007b
     separator #ff007b
 
-    focused_workspace  #ff007b #ff007b77 #ff007b
-    active_workspace   #a20757 #ff007b33 #a20757
-    inactive_workspace #a20757 #00101300 #a20757
-    urgent_workspace   #ff007b #ff007b #001013
-    binding_mode    #ff0000 #a20757 #ff007b
+    focused_workspace  #ff007b00 #00000000 #ff007b
+    active_workspace   #a2075700 #00000000 #a20757
+    inactive_workspace #a2075700 #00000000 #a20757
+    urgent_workspace   #ff007b00 #00000000 #001013
+    binding_mode    #ff000000 #00000000 #ff007b
   }
 }
+gaps inner 5
+gaps outer 5
 for_window [class="^.*"] border pixel 6
-smart_gaps on
+smart_gaps off
 workspace_layout default
 workspace_auto_back_and_forth no
 new_window 1pixel
-new_float pixel 1
+new_float pixel 0
+hide_edge_borders smart_no_gaps
 
 # Compositor
 exec --no-startup-id picom
