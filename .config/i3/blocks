@@ -1,39 +1,43 @@
-# Global properties
-# separator=
-separator_block_width=19
+full_text=⟨ 
+align=center
+separator=false
+separator_block_width=7
 
 [time]
 markup=pango
-command=date +" <span size='x-large' weight='heavy'> %d-%m-%y  %H:%M:%S</span>"
+command=date +" <span size='large'>  %d-%m-%y <span color='#00aaf0'></span>  %H:%M:%S</span>"
 interval=1
-align=right
-min_width=1010
-
+min_width=900
 
 [temperature_cpu]
-command=/home/fox/.sources/i3blocks-contrib/temperature/temperature | head -n 1
-label=   
+command=$I3BLOCKS_CONTRIB_DIR/temperature/temperature | head -n 1
+label=  
 interval=10
 T_WARN=85
 T_CRIT=105
 SENSOR_CHIP="coretemp-isa-0000"
+align=left
+
+[cpu_usage]
+command=$I3BLOCKS_CONTRIB_DIR/cpu_usage/cpu_usage
+interval=10
+
+[separator]
+
+[memory]
+command=$I3BLOCKS_CONTRIB_DIR/memory/memory | head -n 1
+label= 
+interval=30
+
+[separator]
 
 [rofi-wttr]
-command=/home/fox/.sources/i3blocks-contrib/rofi-wttr/rofi-wttr
+command=$I3BLOCKS_CONTRIB_DIR/rofi-wttr/rofi-wttr
 interval=300
-BAR_POSITION=top
-# LABEL=🌡️
+BAR_POSITION=bottom
+align=left
+LABEL= 
 LOCATION=Wrocław
 #ROFI_CONFIG_FILE=/dev/null
 
-[cpu_usage]
-command='/home/fox/.sources/i3blocks-contrib/cpu_usage/cpu_usage'
-markup=pango
-interval=persist
-LABEL=   
-
-[memory]
-command=/home/fox/.sources/i3blocks-contrib/memory/memory | head -n 1
-label=  
-interval=30
-
+[separator]
