@@ -1,5 +1,5 @@
 exec --no-statup-id "setxkbmap -layout pl"
-exec_always xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-1 --off
+exec_always xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-0 --mode 1920x1080 --primary --pos 1920x0 --rotate normal --output DP-1 --off
 exec --no-startup-id dex --autostart --environment i3
 exec_always feh --bg-fill /home/fox/.config/i3/static/wallpaper.png
 exec Telegram
@@ -157,7 +157,7 @@ bar {
   strip_workspace_numbers yes
   position bottom
   tray_output HDMI-0
-  font pango:Iosevka Fox v2 14
+  font pango:Iosevka Fox v2 18
   status_command i3blocks -c $HOME/.config/i3/blocks
   i3bar_command i3bar --transparency
   padding 0px 4px 0px 4px
@@ -166,10 +166,10 @@ bar {
     statusline #ff007b
     separator #ff007b
 
-    focused_workspace  #ff007b00 #ff007b60 #ff007b
-    active_workspace   #a2075700 #ff007b30 #a20757
-    inactive_workspace #a2075700 #00000000 #a20757
-    urgent_workspace   #ff007b00 #00000000 #001013
+    focused_workspace  #000000 #ff007b60 #ff007b
+    active_workspace   #000000 #ff007b30 #a20757
+    inactive_workspace #000000 #00000000 #a20757
+    urgent_workspace   #000000 #00000000 #ff0000
     binding_mode    #ff0000 #00000000 #ff007b
   }
 }
