@@ -1,32 +1,43 @@
 full_text=" "
 align=center
 separator=false
-separator_block_width=7
+separator_block_width=2
 
 [time]
 markup=pango
-command=date +" <span size='large'>  %d-%m-%y <span color='#00aaf0'></span>  %H:%M:%S</span>"
+command=date +" <span size='x-large'>  <span size='large' color='#80003e'>%Y-</span>%m-%d <span  size='xx-large' color='#00aaf0'></span>  %H:%M<span color='#80003e' size='large'>:%S</span></span>"
 interval=1
 min_width=900
 
 [temperature_cpu]
 command=$I3BLOCKS_CONTRIB_DIR/temperature/temperature | head -n 1
-label=  
+label=
 interval=10
 T_WARN=85
 T_CRIT=105
 SENSOR_CHIP="coretemp-isa-0000"
 align=left
 
+[separator]
+
 [cpu_usage]
 command=$I3BLOCKS_CONTRIB_DIR/cpu_usage/cpu_usage
 interval=10
+LABEL=
+#min_width=CPU: 100.00%
+#T_WARN=50
+#T_CRIT=80
+#DECIMALS=2
+COLOR_NORMAL=#FF007B
+#COLOR_WARN=#FFFC00
+#COLOR_CRIT=#FF0000
 
 [separator]
 
 [memory]
 command=$I3BLOCKS_CONTRIB_DIR/memory/memory | head -n 1
-label= 
+instance=mem
+label=
 interval=30
 
 [separator]
@@ -36,8 +47,6 @@ command=$I3BLOCKS_CONTRIB_DIR/rofi-wttr/rofi-wttr
 interval=300
 BAR_POSITION=bottom
 align=left
-LABEL= 
+LABEL=
 LOCATION=Wrocław
 #ROFI_CONFIG_FILE=/dev/null
-
-[separator]
