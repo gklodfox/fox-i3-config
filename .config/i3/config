@@ -1,18 +1,17 @@
-font pango:Iosevka Fox v2 11
-exec --no-startup-id "setxkbmap pl"
-# exec_always xrandr --output DVI-D-0 --off --output HDMI-0 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off
-exec --no-startup-id dex --autostart --environment i3
-exec_always feh --bg-fill /home/foxy/.config/i3/static/wallpaper.png
-exec --no-startup-id Telegram
-exec --no-startup-id steam
-exec --no-startup-id discord
-exec xset s off
-exec xset -dpms
-exec --no-startup-id picom --daemon
-exec --no-startup-id nm-applet
+font pango:Iosevka Fox v2 Regular 12
 
+set $primary_monitor HDMI-0
+set $secondary_monitor DP-0
+
+exec --no-startup-id dunst &
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id setxkbmap pl
+exec --no-startup-id xrandr --output $primary_monitor --auto --left-of $secondary_monitor
+exec --no-startup-id picom -b
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_i3status killall -SIGUSR1 i3status-rs
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -59,17 +58,17 @@ mode "resize" {
 }
 bindsym Mod4+r mode "resize"
 # Keybinds
-set $bgcolor #ff007b
-set $in-bgcolor #a20757
-set $text #820f48
+set $bgcolor #00aaff
+set $in-bgcolor #ff007b
+set $text #000000
 set $u-bgcolor #ff007b
 set $indicator #ff007b
-set $in-text #ff007b
+set $in-text #000000
 set $focused-ws #ff007b
 set $bar-color  #ff007b
 #                       border          background      text            indicator
 client.focused          $bgcolor        $bgcolor        $text           $indicator
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.unfocused        $in-bgcolor     $in-bgcolor	$text        $in-bgcolor
 client.focused_inactive $in-bgcolor     $in-bgcolor     $text           $in-bgcolor
 client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
 
@@ -77,27 +76,27 @@ floating_modifier Mod4
 tiling_drag modifier titlebar
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: 󰎦 "
-set $ws2 "2: 󰎩 "
-set $ws3 "3: 󰎬 "
-set $ws4 "4: 󰎮 "
-set $ws5 "5: 󰎰 "
-set $ws6 "6: 󰎵 "
-set $ws7 "7: 󰎸 "
-set $ws8 "8: 󰎻 "
-set $ws9 "9: 󰎾 "
+set $ws1 "1:  "
+set $ws2 "2:  "
+set $ws3 "3:  "
+set $ws4 "4:  "
+set $ws5 "5:  "
+set $ws6 "6:  "
+set $ws7 "7:  "
+set $ws8 "8:  "
+set $ws9 "9:  "
 set $ws0 "0: 󰎇 "
 
-workspace $ws0 output nonprimary
-workspace $ws1 output nonprimary
-workspace $ws2 output nonprimary
-workspace $ws3 output primary
-workspace $ws4 output primary
-workspace $ws5 output primary
-workspace $ws6 output primary
-workspace $ws7 output primary
-workspace $ws8 output primary
-workspace $ws9 output primary
+workspace $ws1 output $primary_monitor
+workspace $ws2 output $primary_monitor
+workspace $ws3 output $primary_monitor
+workspace $ws4 output $secondary_monitor
+workspace $ws5 output $secondary_monitor
+workspace $ws6 output $secondary_monitor
+workspace $ws7 output $secondary_monitor
+workspace $ws8 output $secondary_monitor
+workspace $ws9 output $secondary_monitor
+workspace $ws0 output $secondary_monitor
 
 bindsym Mod4+1 workspace number $ws1
 bindsym Mod4+2 workspace number $ws2
@@ -121,9 +120,57 @@ bindsym Mod4+Shift+7 move container to workspace number $ws7
 bindsym Mod4+Shift+8 move container to workspace number $ws8
 bindsym Mod4+Shift+9 move container to workspace number $ws9
 bindsym Mod4+Shift+0 move container to workspace number $ws0
-# Pin applications to workspace
-assign [class="(?i)qjackctl"] $ws0
-assign [class="(?i)qsampler"] $ws0
+# BARS
+
+# Top bar
+bar {
+  font pango:Iosevka Fox v2 Regular, FontAwesome 16
+  strip_workspace_numbers yes
+  position top
+  tray_output none
+  status_command i3status-rs ${XDG_CONFIG_DIR}/i3status-rust/config_top.toml
+  padding 1px 0px 1px 0px
+  colors {
+    background #011017
+    statusline #ff007b
+    separator #ff007b
+
+    focused_workspace  #000000 #ff007b60 #ff007b
+    active_workspace   #000000 #ff007b30 #a20757
+    inactive_workspace #000000 #011017 #a20757
+    urgent_workspace   #000000 #011017 #ff0000
+    binding_mode    #ff0000 #011017 #ff007b
+  }
+}
+
+# Bottom bar
+bar {
+  font pango:Iosevka Fox v2 Regular, FontAwesome 11
+  tray_output $primary_monitor
+  workspace_buttons no
+  position bottom
+  status_command i3status-rs ${XDG_CONFIG_DIR}/i3status-rust/config_bottom.toml
+  padding 0px 0px 0px 0px
+  colors {
+    background #011017
+    statusline #ff007b
+    separator #ff007b
+
+    focused_workspace  #000000 #ff007b60 #ff007b
+    active_workspace   #000000 #ff007b30 #a20757
+    inactive_workspace #000000 #00000000 #a20757
+    urgent_workspace   #000000 #00000000 #ff0000
+    binding_mode    #ff0000 #00000000 #ff007b
+  }
+}
+
+# USER RULES
+
+gaps inner 5
+gaps outer 2
+workspace_auto_back_and_forth no
+default_border pixel 5 
+default_floating_border none
 
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
@@ -137,35 +184,53 @@ for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="steam"] floating enable
-for_window [class="transformice"] floating enable
-for_window [class="exe$"] floating enable
+for_window [class="scrcpy"] floating enable
+for_window [class="Transformice"] floating enable
+for_window [class=".*\.exe$"] floating enable
 
-gaps inner 5
-gaps outer 2
-workspace_auto_back_and_forth no
-default_border pixel 5 
-default_floating_border pixel 1
+# Apply tabbed layout to specific applications
+for_window [class="qpwgraph"] layout tabbed
+for_window [class="pavucontrol"] layout tabbed
+for_window [class="discord"] layout tabbed
+for_window [class="TelegramDesktop"] layout tabbed
+for_window [class="org.mozilla.Thunderbird"] layout tabbed
 
-bar {
-  output DP-0
-  output HDMI-0
-  strip_workspace_numbers yes
-  position bottom
-  tray_output DP-0
-  font pango:Iosevka Fox v2 Bold 15
-  status_command i3blocks -c $HOME/.config/i3/blocks
-  i3bar_command i3bar --transparency
-  padding 0px 4px 4px 4px
-  colors {
-    background #00000000
-    statusline #ff007b
-    separator #ff007b
+assign [class=".*\.exe$"] $ws5
+assign [class="Transformice"] $ws5
+assign [class="TelegramDesktop"] $ws1
+assign [class="discord"] $ws1
+assign [class="steam"] $ws5
+assign [class="kitty"] $ws2
+assign [class="qpwgraph"] $ws0
+assign [class="pavucontrol"] $ws0
+assign [class="qutebrowser"] $ws3
+assign [class="org.mozilla.Thunderbird"] $ws1
 
-    focused_workspace  #000000 #ff007b60 #ff007b
-    active_workspace   #000000 #ff007b30 #a20757
-    inactive_workspace #000000 #00000000 #a20757
-    urgent_workspace   #000000 #00000000 #ff0000
-    binding_mode    #ff0000 #00000000 #ff007b
-  }
-}
+# STARTUP APPS
 
+# TERMINAL
+exec --no-startup-id i3-msg "\
+workspace $ws2; \
+exec i3-sensible-terminal"
+
+# DAEMONS
+exec --no-startup-id i3-msg "\
+workspace $ws0; \
+exec pavucontrol; \
+exec qpwgraph"
+
+# IMs
+exec --no-startup-id i3-msg "\
+workspace $ws1; \
+exec discord; \
+exec thunderbird; \
+exec Telegram"
+
+# BROWSER
+exec --no-startup-id i3-msg "\
+workspace $ws3; \
+exec qutebrowser"
+
+exec --no-startup-id dunstify 'SIEMA LISIE' 'chuju ty'\
+--urgency=critical\
+--expire-time=100"
